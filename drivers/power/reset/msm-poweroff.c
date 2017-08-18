@@ -381,9 +381,7 @@ static void msm_restart_prepare(const char *cmd)
 				PON_RESTART_REASON_NORMAL);
 			__raw_writel(0x77665501, restart_reason);
 		}
-	} else {
-		qpnp_pon_set_restart_reason(
-			PON_RESTART_REASON_NORMAL);
+	} else if (in_panic) {
 		__raw_writel(0x77665501, restart_reason);
 	}
 
